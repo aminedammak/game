@@ -1,5 +1,6 @@
 import React from "react";
 import { Classe, MasteryPoints } from "../../entities/personnage";
+import { useCreatePerson } from "../../use-cases/useCreatePerson";
 
 function CreatePersonnage() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -11,12 +12,35 @@ function CreatePersonnage() {
     intelligence: 0,
   });
 
+  const createPerson = useCreatePerson();
+
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const result = createPerson(name, classe, masteryPoints);
+
+    if (result.status === "success") {
+      alert(result.message);
+      // Reset form fields
+      setName("");
+      setClasse("Guerrier");
+      setMasteryPoints({
+        agility: 0,
+        strenth: 0,
+        intelligence: 0,
+      });
+      // Close the modal
+      closeModal();
+    } else {
+      alert(result.message);
+    }
   };
 
   return (
@@ -51,7 +75,7 @@ function CreatePersonnage() {
             }}
           >
             <h2>Create Personnage</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: "10px" }}>
                 <label
                   htmlFor="name"
@@ -169,6 +193,14 @@ function CreatePersonnage() {
               <button
                 type="submit"
                 style={{ marginRight: "10px", padding: "5px 10px" }}
+                disabled={
+                  !name ||
+                  !classe ||
+                  masteryPoints.agility +
+                    masteryPoints.strenth +
+                    masteryPoints.intelligence !==
+                    5
+                }
               >
                 Create
               </button>
