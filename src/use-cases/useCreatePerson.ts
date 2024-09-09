@@ -1,5 +1,5 @@
 import {
-  Category,
+  Classe,
   createPersonnage,
   MasteryPoints,
 } from "../entities/personnage";
@@ -16,7 +16,7 @@ interface creationResult {
 export const useCreatePerson = () => {
   return (
     name: string,
-    category: Category,
+    classe: Classe,
     masteryPoints: MasteryPoints
   ): creationResult => {
     const personnages = getAllPersonnages();
@@ -35,7 +35,7 @@ export const useCreatePerson = () => {
     };
 
     // if the above checks passes, proceed for the creation of personnage
-    const newPersonnage = createPersonnage(name, category, masteryPoints);
+    const newPersonnage = createPersonnage(name, classe, masteryPoints);
     savePersonnage(newPersonnage);
     return { status: "success", message: "Nouveau personnage enregistré" };
   };
