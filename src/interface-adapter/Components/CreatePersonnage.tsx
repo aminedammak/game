@@ -1,7 +1,15 @@
 import React from "react";
+import { Classe, MasteryPoints } from "../../entities/personnage";
 
 function CreatePersonnage() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [name, setName] = React.useState("");
+  const [classe, setClasse] = React.useState<Classe>("Guerrier");
+  const [masteryPoints, setMasteryPoints] = React.useState<MasteryPoints>({
+    agility: 0,
+    strenth: 0,
+    intelligence: 0,
+  });
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -55,6 +63,8 @@ function CreatePersonnage() {
                   type="text"
                   id="name"
                   name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   required
                   style={{ width: "100%", padding: "5px" }}
                 />
@@ -69,6 +79,8 @@ function CreatePersonnage() {
                 <select
                   id="classe"
                   name="classe"
+                  value={classe}
+                  onChange={(e) => setClasse(e.target.value as Classe)}
                   required
                   style={{ width: "100%", padding: "5px" }}
                 >
@@ -92,6 +104,13 @@ function CreatePersonnage() {
                     type="number"
                     id="agility"
                     name="agility"
+                    value={masteryPoints.agility}
+                    onChange={(e) =>
+                      setMasteryPoints((prev) => ({
+                        ...prev,
+                        agility: parseInt(e.target.value),
+                      }))
+                    }
                     min="0"
                     max={5}
                     required
@@ -109,6 +128,13 @@ function CreatePersonnage() {
                     type="number"
                     id="strength"
                     name="strength"
+                    value={masteryPoints.strenth}
+                    onChange={(e) =>
+                      setMasteryPoints((prev) => ({
+                        ...prev,
+                        strenth: parseInt(e.target.value),
+                      }))
+                    }
                     min="0"
                     max={5}
                     required
@@ -126,6 +152,13 @@ function CreatePersonnage() {
                     type="number"
                     id="intelligence"
                     name="intelligence"
+                    value={masteryPoints.intelligence}
+                    onChange={(e) =>
+                      setMasteryPoints((prev) => ({
+                        ...prev,
+                        intelligence: parseInt(e.target.value),
+                      }))
+                    }
                     min="0"
                     max={5}
                     required
