@@ -2,47 +2,31 @@ import React from "react";
 import { Classe, MasteryPoints } from "../../entities/personnage";
 import { useCreatePerson } from "../../use-cases/useCreatePerson";
 
-function CreatePersonnage() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [name, setName] = React.useState("");
-  const [classe, setClasse] = React.useState<Classe>("Guerrier");
-  const [masteryPoints, setMasteryPoints] = React.useState<MasteryPoints>({
-    agility: 0,
-    strenth: 0,
-    intelligence: 0,
-  });
+interface CreatePersonnageProps {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  openModal: () => void;
+  closeModal: () => void;
+  isModalOpen: boolean;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  classe: Classe;
+  setClasse: React.Dispatch<React.SetStateAction<Classe>>;
+  masteryPoints: MasteryPoints;
+  setMasteryPoints: React.Dispatch<React.SetStateAction<MasteryPoints>>;
+}
 
-  const createPerson = useCreatePerson();
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const result = createPerson(name, classe, masteryPoints);
-
-    if (result.status === "success") {
-      alert(result.message);
-      // Reset form fields
-      setName("");
-      setClasse("Guerrier");
-      setMasteryPoints({
-        agility: 0,
-        strenth: 0,
-        intelligence: 0,
-      });
-      // Close the modal
-      closeModal();
-    } else {
-      alert(result.message);
-    }
-  };
-
+function CreatePersonnage({
+  handleSubmit,
+  openModal,
+  closeModal,
+  isModalOpen,
+  name,
+  setName,
+  classe,
+  setClasse,
+  masteryPoints,
+  setMasteryPoints,
+}: CreatePersonnageProps) {
   return (
     <div>
       <button onClick={openModal}>Create Personnage</button>

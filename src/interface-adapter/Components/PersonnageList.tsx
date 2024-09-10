@@ -2,18 +2,11 @@ import { useState, useEffect } from "react";
 import { Personnage } from "../../entities/personnage";
 import { getAllPersonnages } from "../../frameworks-drivers/repositories/LocalStoragePersonnageRepository";
 
-function PersonnageList() {
-  const [personnages, setPersonnages] = useState<Personnage[]>([]);
+interface PersonnageListProps {
+  personnages: Personnage[];
+}
 
-  useEffect(() => {
-    const loadPersonnages = () => {
-      const loadedPersonnages = getAllPersonnages();
-      setPersonnages(loadedPersonnages);
-    };
-
-    loadPersonnages();
-  }, []);
-
+function PersonnageList({ personnages }: PersonnageListProps) {
   return (
     <div>
       <h2>Liste des Personnages</h2>
