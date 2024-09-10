@@ -52,6 +52,8 @@ function Personnages() {
       });
       // Close the modal
       closeModal();
+      const loadedPersonnages = getAllPersonnages();
+      setPersonnages(loadedPersonnages);
     } else {
       alert(result.message);
     }
