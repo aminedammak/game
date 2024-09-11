@@ -9,7 +9,17 @@ interface PersonnageListProps {
 function PersonnageList({ personnages }: PersonnageListProps) {
   return (
     <div>
-      <h2 style={{ color: "#333", textAlign: "center", marginBottom: "20px" }}>
+      <h2
+        style={{
+          color: "white",
+          textAlign: "center",
+          marginBottom: "20px",
+          backgroundColor: "#3F9F40",
+          padding: "14px",
+          boxShadow: "0 0 22px rgba(0, 0, 0, 0.12)",
+          borderRadius: "4px",
+        }}
+      >
         Liste des Personnages
       </h2>
       {personnages.length === 0 ? (

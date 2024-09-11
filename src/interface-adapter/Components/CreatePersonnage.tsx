@@ -29,7 +29,22 @@ function CreatePersonnage({
 }: CreatePersonnageProps) {
   return (
     <div>
-      <button onClick={openModal}>Create Personnage</button>
+      <button
+        onClick={openModal}
+        style={{
+          marginRight: "10px",
+          marginTop: "20px",
+          padding: "12px",
+          backgroundColor: "#FF8C00", // Changed to a dark orange color
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        Créer un personnage
+      </button>
       {isModalOpen && (
         <div
           className="modal"
@@ -58,14 +73,14 @@ function CreatePersonnage({
               overflowY: "auto",
             }}
           >
-            <h2>Create Personnage</h2>
+            <h2>Créer un personnage</h2>
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: "10px" }}>
                 <label
                   htmlFor="name"
                   style={{ display: "block", marginBottom: "5px" }}
                 >
-                  Name:
+                  Nom:
                 </label>
                 <input
                   type="text"
@@ -82,7 +97,7 @@ function CreatePersonnage({
                   htmlFor="classe"
                   style={{ display: "block", marginBottom: "5px" }}
                 >
-                  Class:
+                  Classe:
                 </label>
                 <select
                   id="classe"
@@ -92,7 +107,7 @@ function CreatePersonnage({
                   required
                   style={{ width: "100%", padding: "5px" }}
                 >
-                  <option value="">Select a class</option>
+                  <option value="">Sélectionner une classe</option>
                   <option value="Guerrier">Guerrier</option>
                   <option value="Chasseur">Chasseur</option>
                   <option value="Mage">Mage</option>
@@ -100,13 +115,13 @@ function CreatePersonnage({
                 </select>
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <h3>Mastery Points:</h3>
+                <h3>Points de maîtrise:</h3>
                 <div style={{ marginBottom: "5px" }}>
                   <label
                     htmlFor="agility"
                     style={{ display: "inline-block", width: "100px" }}
                   >
-                    Agility:
+                    Agilité:
                   </label>
                   <input
                     type="number"
@@ -130,7 +145,7 @@ function CreatePersonnage({
                     htmlFor="strength"
                     style={{ display: "inline-block", width: "100px" }}
                   >
-                    Strength:
+                    Force:
                   </label>
                   <input
                     type="number"
@@ -186,10 +201,10 @@ function CreatePersonnage({
                     5
                 }
               >
-                Create
+                Créer
               </button>
               <button onClick={closeModal} style={{ padding: "5px 10px" }}>
-                Close
+                Fermer
               </button>
             </form>
           </div>
