@@ -13,7 +13,7 @@ interface creationResult {
   message: string;
 }
 
-export const useCreatePerson = () => {
+export const useCreatePersonnage = () => {
   return (
     name: string,
     classe: Classe,
@@ -21,8 +21,7 @@ export const useCreatePerson = () => {
   ): creationResult => {
     const personnages = getAllPersonnages();
 
-    // check if the name does not already exists in the list of personnages, otherwise show a message
-
+    // check if the name does not already exists in the list of personnages, otherwise show a warning message
     const personnageExists = personnages.some(
       (personnage) => personnage.name === name
     );
@@ -35,7 +34,7 @@ export const useCreatePerson = () => {
       };
     }
 
-    // check that the list is less than 10, otherwise show a message
+    // check that the list is less than 10, otherwise show a warning message
     if (personnages.length >= 10) {
       return {
         status: "failure",

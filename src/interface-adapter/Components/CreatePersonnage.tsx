@@ -1,6 +1,6 @@
 import React from "react";
 import { Classe, MasteryPoints } from "../../entities/personnage";
-import { useCreatePerson } from "../../use-cases/useCreatePerson";
+import { useCreatePersonnage } from "../../use-cases/useCreatePersonnage";
 
 interface CreatePersonnageProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -38,9 +38,10 @@ function CreatePersonnage({
           backgroundColor: "#FF8C00", // Changed to a dark orange color
           color: "white",
           border: "none",
-          borderRadius: "4px",
+          borderRadius: "6px",
           cursor: "pointer",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+          fontSize: "16px",
         }}
       >
         Créer un personnage
@@ -115,7 +116,7 @@ function CreatePersonnage({
                 </select>
               </div>
               <div style={{ marginBottom: "10px" }}>
-                <h3>Points de maîtrise:</h3>
+                <h3>Points de maîtrise</h3>
                 <div style={{ marginBottom: "5px" }}>
                   <label
                     htmlFor="agility"
@@ -188,6 +189,7 @@ function CreatePersonnage({
                     style={{ width: "50px" }}
                   />
                 </div>
+                <p style={{ fontSize: "12px" }}>Le total doit être égal à 5</p>
               </div>
               <button
                 type="submit"

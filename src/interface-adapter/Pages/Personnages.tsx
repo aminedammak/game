@@ -3,11 +3,11 @@ import PersonnageList from "../Components/PersonnageList";
 import CreatePersonnage from "../Components/CreatePersonnage";
 import { Classe, MasteryPoints, Personnage } from "../../entities/personnage";
 import { getAllPersonnages } from "../../frameworks-drivers/repositories/LocalStoragePersonnageRepository";
-import { useCreatePerson } from "../../use-cases/useCreatePerson";
+import { useCreatePersonnage } from "../../use-cases/useCreatePersonnage";
 
 function Personnages() {
   const [personnages, setPersonnages] = useState<Personnage[]>([]);
-  const createPerson = useCreatePerson();
+  const createPerson = useCreatePersonnage();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [name, setName] = React.useState("");

@@ -11,13 +11,11 @@ function PersonnageList({ personnages }: PersonnageListProps) {
     <div>
       <h2
         style={{
-          color: "white",
+          color: "#666",
           textAlign: "center",
           marginBottom: "20px",
-          backgroundColor: "#3F9F40",
           padding: "14px",
-          boxShadow: "0 0 22px rgba(0, 0, 0, 0.12)",
-          borderRadius: "4px",
+          display: "inline-block",
         }}
       >
         Liste des Personnages
@@ -36,13 +34,12 @@ function PersonnageList({ personnages }: PersonnageListProps) {
         >
           <thead>
             <tr style={{ backgroundColor: "#4CAF50", color: "white" }}>
-              <th style={{ padding: "12px", textAlign: "left" }}>Nom</th>
-              <th style={{ padding: "12px", textAlign: "left" }}>Classe</th>
-              <th style={{ padding: "12px", textAlign: "left" }}>Niveau</th>
-              <th style={{ padding: "12px", textAlign: "left" }}>Endurance</th>
-              <th style={{ padding: "12px", textAlign: "left" }}>
-                Points de maîtrise
-              </th>
+              <th style={{ padding: "12px" }}>Index</th>
+              <th style={{ padding: "12px" }}>Nom</th>
+              <th style={{ padding: "12px" }}>Classe</th>
+              <th style={{ padding: "12px" }}>Niveau</th>
+              <th style={{ padding: "12px" }}>Endurance</th>
+              <th style={{ padding: "12px" }}>Points de maîtrise</th>
             </tr>
           </thead>
           <tbody>
@@ -53,6 +50,9 @@ function PersonnageList({ personnages }: PersonnageListProps) {
                   backgroundColor: index % 2 === 0 ? "#f2f2f2" : "white",
                 }}
               >
+                <td style={{ padding: "12px", borderBottom: "1px solid #ddd" }}>
+                  {index + 1}
+                </td>
                 <td style={{ padding: "12px", borderBottom: "1px solid #ddd" }}>
                   {personnage.name}
                 </td>

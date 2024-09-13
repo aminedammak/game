@@ -8,6 +8,7 @@ export interface MasteryPoints {
 }
 
 export interface Personnage {
+  id: number;
   name: string;
   classe: Classe;
   masteryPoints: MasteryPoints;
@@ -32,11 +33,12 @@ export function createPersonnage(
   classe: Classe,
   masteryPoints: MasteryPoints
 ): Personnage {
+  const id = Date.now();
   const level = 1;
-
   const endurance = calculateEndurance(classe, level);
 
   return {
+    id,
     name,
     classe,
     masteryPoints,
