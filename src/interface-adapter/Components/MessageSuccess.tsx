@@ -6,18 +6,6 @@ interface SuccessMessageProps {
 }
 
 const MessageSuccess: React.FC<SuccessMessageProps> = ({ text }) => {
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!visible) return null;
-
   return (
     <div
       style={{

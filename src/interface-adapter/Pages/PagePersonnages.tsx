@@ -25,6 +25,16 @@ function Personnages() {
     creationResult | undefined
   >();
 
+  const [isSuccessVisible, setIsSuccessVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsSuccessVisible(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, [isSuccessVisible]);
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -44,12 +54,10 @@ function Personnages() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const result = createPerson(name, classe, masteryPoints);
     setCreationResult(result);
 
     if (result.status === "success") {
-      alert(result.message);
       // Reset form fields
       setName("");
       setClasse("Guerrier");
@@ -62,16 +70,17 @@ function Personnages() {
       closeModal();
       const loadedPersonnages = getAllPersonnages();
       setPersonnages(loadedPersonnages);
-    } else {
-      alert(result.message);
+      setIsSuccessVisible(true);
     }
   };
 
   return (
-    <div style={{ paddingTop: "80px" }}>
-      {creationResult && creationResult.status === "success" && (
-        <MessageSuccess text={creationResult.message} />
-      )}
+    <div style={{ paddingTop: "70px" }}>
+      {isSuccessVisible &&
+        creationResult &&
+        creationResult.status === "success" && (
+          <MessageSuccess text={creationResult.message} />
+        )}
       <PersonnageList personnages={personnages} />
       <CreatePersonnage
         handleSubmit={handleSubmit}

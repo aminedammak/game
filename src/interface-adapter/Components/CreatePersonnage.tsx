@@ -78,10 +78,9 @@ function CreatePersonnage({
             }}
           >
             <h2>Créer un personnage</h2>
-            <Message
-              text="Le personnage a été créé avec succès"
-              type="failure"
-            />
+            {creationResult && creationResult.status === "failure" && (
+              <Message text={creationResult.message} type="failure" />
+            )}
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: "10px" }}>
                 <label
