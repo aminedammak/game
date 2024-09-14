@@ -8,7 +8,7 @@ import {
   savePersonnage,
 } from "../frameworks-drivers/repositories/LocalStoragePersonnageRepository";
 
-interface creationResult {
+export interface creationResult {
   status: "success" | "failure";
   message: string;
 }

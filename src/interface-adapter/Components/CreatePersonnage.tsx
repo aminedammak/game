@@ -1,6 +1,7 @@
 import React from "react";
 import { Classe, MasteryPoints } from "../../entities/personnage";
-import { useCreatePersonnage } from "../../use-cases/useCreatePersonnage";
+import Message from "./Message";
+import { creationResult } from "../../use-cases/useCreatePersonnage";
 
 interface CreatePersonnageProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -13,6 +14,7 @@ interface CreatePersonnageProps {
   setClasse: React.Dispatch<React.SetStateAction<Classe>>;
   masteryPoints: MasteryPoints;
   setMasteryPoints: React.Dispatch<React.SetStateAction<MasteryPoints>>;
+  creationResult?: creationResult;
 }
 
 function CreatePersonnage({
@@ -26,6 +28,7 @@ function CreatePersonnage({
   setClasse,
   masteryPoints,
   setMasteryPoints,
+  creationResult,
 }: CreatePersonnageProps) {
   return (
     <div>
@@ -75,6 +78,10 @@ function CreatePersonnage({
             }}
           >
             <h2>Créer un personnage</h2>
+            <Message
+              text="Le personnage a été créé avec succès"
+              type="failure"
+            />
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: "10px" }}>
                 <label

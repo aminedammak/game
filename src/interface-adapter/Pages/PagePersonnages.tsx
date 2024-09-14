@@ -3,7 +3,11 @@ import PersonnageList from "../Components/PersonnageList";
 import CreatePersonnage from "../Components/CreatePersonnage";
 import { Classe, MasteryPoints, Personnage } from "../../entities/personnage";
 import { getAllPersonnages } from "../../frameworks-drivers/repositories/LocalStoragePersonnageRepository";
-import { useCreatePersonnage } from "../../use-cases/useCreatePersonnage";
+import {
+  creationResult,
+  useCreatePersonnage,
+} from "../../use-cases/useCreatePersonnage";
+import MessageSuccess from "../Components/MessageSuccess";
 
 function Personnages() {
   const [personnages, setPersonnages] = useState<Personnage[]>([]);
@@ -17,6 +21,9 @@ function Personnages() {
     strenth: 0,
     intelligence: 0,
   });
+  const [creationResult, setCreationResult] = useState<
+    creationResult | undefined
+  >();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -39,6 +46,7 @@ function Personnages() {
     e.preventDefault();
 
     const result = createPerson(name, classe, masteryPoints);
+    setCreationResult(result);
 
     if (result.status === "success") {
       alert(result.message);
@@ -60,7 +68,10 @@ function Personnages() {
   };
 
   return (
-    <>
+    <div style={{ paddingTop: "80px" }}>
+      {creationResult && creationResult.status === "success" && (
+        <MessageSuccess text={creationResult.message} />
+      )}
       <PersonnageList personnages={personnages} />
       <CreatePersonnage
         handleSubmit={handleSubmit}
@@ -73,8 +84,9 @@ function Personnages() {
         setClasse={setClasse}
         masteryPoints={masteryPoints}
         setMasteryPoints={setMasteryPoints}
+        creationResult={creationResult}
       />
-    </>
+    </div>
   );
 }
 
