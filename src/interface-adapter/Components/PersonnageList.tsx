@@ -34,7 +34,7 @@ function PersonnageList({ personnages }: PersonnageListProps) {
           }}
         >
           <thead>
-            <tr style={{ backgroundColor: "#4CAF50", color: "white" }}>
+            <tr style={{ backgroundColor: "rgb(99 103 91)", color: "white" }}>
               <th style={{ padding: "12px" }}>Index</th>
               <th style={{ padding: "12px" }}>Nom</th>
               <th style={{ padding: "12px" }}>Classe</th>
