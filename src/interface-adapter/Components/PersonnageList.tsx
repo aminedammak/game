@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
 import { Personnage } from "../../entities/personnage";
-import { getAllPersonnages } from "../../frameworks-drivers/repositories/LocalStoragePersonnageRepository";
-import { creationResult } from "../../use-cases/useCreatePersonnage";
 
 interface PersonnageListProps {
   personnages: Personnage[];

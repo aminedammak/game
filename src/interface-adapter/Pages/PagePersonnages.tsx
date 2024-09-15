@@ -75,7 +75,7 @@ function Personnages() {
   };
 
   return (
-    <div style={{ paddingTop: "70px" }}>
+    <div style={{ paddingTop: "55px" }}>
       {isSuccessVisible &&
         creationResult &&
         creationResult.status === "success" && (
